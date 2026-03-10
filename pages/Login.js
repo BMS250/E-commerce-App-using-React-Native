@@ -30,7 +30,7 @@ export default function Login({ navigation }) {
                     </View>
                     <Text style={{ color: "#FF7622" }}>Forgot Password</Text>
                 </View>
-                <TouchableOpacity style={{backgroundColor: "#FF7622", padding: 12, borderRadius: 12}} onPress={() => navigation.navigate('Food')}>
+                <TouchableOpacity style={{backgroundColor: "#FF7622", padding: 12, borderRadius: 12}} onPress={() => navigation.navigate('Intro', {imgNum: 1, title: "title 1"})}>
                     <Text style={{margin: "auto", color: "white", fontWeight: 600}}>LOG IN</Text>
                 </TouchableOpacity>
                 <View style={{flexDirection: "row", justifyContent: "center", gap: 12}}>

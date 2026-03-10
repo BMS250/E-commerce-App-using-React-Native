@@ -18,7 +18,8 @@ export default function Details() {
                     </View>
                     <Text style={{ fontSize: 17 }}>Details</Text>
                 </View>
-                <View style={{ width: 300, height: 184, borderRadius: 32, backgroundColor: "#98A8B8", position: "relative", }}>
+                <View style={{ width: 300, height: 184, borderRadius: 32, position: "relative" }}>
+                    <Image source={require('../assets/images/pizza.avif')} width={"100%"} height={"100%"} />
                     <View style={{ position: "absolute", bottom: 20, right: 20, justifyContent: "center", alignItems: "center", backgroundColor: "#adbac7", padding: 12, borderRadius: 45 }}>
                         <Feather name="heart" color="#FFF" size={24} />
                     </View>
