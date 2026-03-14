@@ -12,7 +12,7 @@ export default function FoodItem({ meal, navigation }) {
                 <Text style={{ fontSize: 13 }}>{meal.item.strCategory}</Text>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                     <Text style={{ fontSize: 16, fontWeight: 700 }}>${meal.item.idMeal}</Text>
-                    <Pressable style={{ width: 30, height: 30, borderRadius: 45, backgroundColor: "#F58D1D" }} onPress={() => navigation.navigate('Details')}>
+                    <Pressable style={{ width: 30, height: 30, borderRadius: 45, backgroundColor: "#F58D1D" }} onPress={() => navigation.navigate('Details', {meal: meal.item, navigation: navigation})}>
                         <Text style={{ color: "white", fontSize: 24, fontWeight: 600, margin: "auto" }}>+</Text>
                     </Pressable>
                 </View>

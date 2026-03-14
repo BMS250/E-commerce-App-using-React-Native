@@ -1,3 +1,4 @@
+import { AntDesign } from '@expo/vector-icons'
 import axios from 'axios'
 import FoodItem from 'components/foodItem'
 import React, { useEffect, useState } from 'react'

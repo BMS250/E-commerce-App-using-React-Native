@@ -5,7 +5,9 @@ import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
-export default function Details() {
+export default function Details({ route, navigation }) {
+    const { meal } = route.params;
+
     const [sizeIndex, SetSizeIndex] = useState(1)
     const [itemCounter, SetItemCounter] = useState(1)
     return (
@@ -13,13 +15,13 @@ export default function Details() {
             <View style={{ marginHorizontal: 24, gap: 20 }}>
 
                 <View style={{ flexDirection: "row", gap: 12, alignItems: "center" }}>
-                    <View style={{ width: 45, height: 45, borderRadius: 45, backgroundColor: "#ECF0F4", justifyContent: "center", alignItems: "center" }}>
+                    <Pressable style={{ width: 45, height: 45, borderRadius: 45, backgroundColor: "#ECF0F4", justifyContent: "center", alignItems: "center" }} onPress={() => navigation.pop()}>
                         <AntDesign name="left" color="#000" size={18} />
-                    </View>
+                    </Pressable>
                     <Text style={{ fontSize: 17 }}>Details</Text>
                 </View>
                 <View style={{ width: 300, height: 184, borderRadius: 32, position: "relative" }}>
-                    <Image source={require('../assets/images/pizza.avif')} width={"100%"} height={"100%"} />
+                    <Image source={meal.strMealThumb != null ? { uri: meal.strMealThumb } : require('../assets/images/pizza.avif')} width={"100%"} height={"100%"} />
                     <View style={{ position: "absolute", bottom: 20, right: 20, justifyContent: "center", alignItems: "center", backgroundColor: "#adbac7", padding: 12, borderRadius: 45 }}>
                         <Feather name="heart" color="#FFF" size={24} />
                     </View>
@@ -30,7 +32,7 @@ export default function Details() {
                     </View>
                     <Text>Uttora Coffe House</Text>
                 </View>
-                <Text style={{ fontSize: 20, fontWeight: 700 }}>pizza calzone european</Text>
+                <Text style={{ fontSize: 20, fontWeight: 700 }}>{meal.strMeal ?? "pizza calzone european"}</Text>
                 <Text style={{ color: "#A0A5BA" }}>Prosciutto e funghi is a pizza variety that is topped with tomato sauce.</Text>
                 <View style={{ flexDirection: "row", gap: 32 }}>
                     <View style={{ flexDirection: "row", gap: 8 }}>
@@ -77,7 +79,7 @@ export default function Details() {
                         <Pressable onPress={() => SetItemCounter(itemCounter + 1)} style={{ width: 36, height: 36, backgroundColor: "#41414f", borderRadius: 45, justifyContent: "center", alignItems: "center" }}><Text style={{ color: "white", fontSize: 20, fontWeight: 700 }}>+</Text></Pressable>
                     </View>
                 </View>
-                <TouchableOpacity style={{backgroundColor: "#F58D1D", paddingVertical: 24, borderRadius: 12}}><Text style={{margin: "auto", fontSize: 18, fontWeight: 700, color: "white"}}>ADD TO CART</Text></TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: "#F58D1D", paddingVertical: 24, borderRadius: 12 }}><Text style={{ margin: "auto", fontSize: 18, fontWeight: 700, color: "white" }}>ADD TO CART</Text></TouchableOpacity>
             </View>
 
         </ScrollView>

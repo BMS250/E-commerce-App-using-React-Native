@@ -7,23 +7,36 @@ import Login from 'pages/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Intro from 'pages/intro';
+import Home from 'pages/Home';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function TabNavigator() {
+  return (
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Screen name="Home" component={Home} options={{tabBarIcon: (color, size) => <AntDesign name="home" color="#000" size={18} />}} />
+      <Tab.Screen name="Food" component={Food} options={{tabBarIcon: (color, size) => <Ionicons name="fast-food" color="#000" size={18} />}} />
+    </Tab.Navigator>
+  );
+}
+
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        {/* <Details /> */}
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Login" screenOptions= {{ headerShown: false }}>
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Intro" component={Intro} />
-            <Stack.Screen name="Food" component={Food} />
-            <Stack.Screen name="Details" component={Details} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    // <SafeAreaProvider>
+    <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Intro" component={Intro} initialParams={{ imgNum: 1, title: "Welcome" }} />
+          <Stack.Screen name="Main" component={TabNavigator} />
+          <Stack.Screen name="Details" component={Details} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
+    // </SafeAreaProvider>
 
   );
 }
