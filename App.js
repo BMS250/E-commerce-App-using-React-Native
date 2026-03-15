@@ -10,6 +10,8 @@ import Intro from 'pages/intro';
 import Home from 'pages/Home';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
+import Profile from 'pages/profile';
+import Cart from 'pages/cart';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,6 +21,8 @@ function TabNavigator() {
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Home" component={Home} options={{tabBarIcon: (color, size) => <AntDesign name="home" color="#000" size={18} />}} />
       <Tab.Screen name="Food" component={Food} options={{tabBarIcon: (color, size) => <Ionicons name="fast-food" color="#000" size={18} />}} />
+      <Tab.Screen name="Cart" component={Cart} options={{tabBarIcon: (color, size) => <Ionicons name="cart" color="#000" size={18} />}} />
+      <Tab.Screen name="Profile" component={Profile} options={{tabBarIcon: (color, size) => <AntDesign name="user" color="#000" size={18} />}} />
     </Tab.Navigator>
   );
 }
