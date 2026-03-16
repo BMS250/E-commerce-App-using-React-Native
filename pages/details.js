@@ -4,9 +4,18 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Details({ route, navigation }) {
     const { meal } = route.params;
+    async function handleClick() {
+        await AsyncStorage.setItem(meal.idMeal.toString(), itemCounter.toString())
+        console.log(meal.idMeal.toString());
+        
+        const storedValue = await AsyncStorage.getItem(meal.idMeal.toString());
+        console.log(storedValue);
+        
+    }
 
     const [sizeIndex, SetSizeIndex] = useState(1)
     const [itemCounter, SetItemCounter] = useState(1)
@@ -79,7 +88,7 @@ export default function Details({ route, navigation }) {
                         <Pressable onPress={() => SetItemCounter(itemCounter + 1)} style={{ width: 36, height: 36, backgroundColor: "#41414f", borderRadius: 45, justifyContent: "center", alignItems: "center" }}><Text style={{ color: "white", fontSize: 20, fontWeight: 700 }}>+</Text></Pressable>
                     </View>
                 </View>
-                <TouchableOpacity style={{ backgroundColor: "#F58D1D", paddingVertical: 24, borderRadius: 12 }}><Text style={{ margin: "auto", fontSize: 18, fontWeight: 700, color: "white" }}>ADD TO CART</Text></TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: "#F58D1D", paddingVertical: 24, borderRadius: 12 }} onPress={() => handleClick()}><Text style={{ margin: "auto", fontSize: 18, fontWeight: 700, color: "white" }}>ADD TO CART</Text></TouchableOpacity>
             </View>
 
         </ScrollView>

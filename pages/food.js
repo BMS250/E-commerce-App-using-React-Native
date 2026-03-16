@@ -55,7 +55,7 @@ export default function Food({ navigation }) {
             <TextInput placeholder='e.g. Pizza' placeholderTextColor={"#676767"} style={{ borderRadius: 12, backgroundColor: "#F6F6F6", padding: 18, marginBottom: 32 }} onChangeText={(text) => handleInput(text)} />
             <FlatList data={meals}
                 numColumns={2}
-                renderItem={(meal) => <FoodItem meal={meal} navigation={navigation} />}
+                renderItem={(meal) => <FoodItem meal={meal.item} navigation={navigation} />}
                 refreshing={refreshing}
                 onRefresh={handleRefreshing} />
 
